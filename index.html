@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QUIZ APPLICATION</title>
+    <style>
+      body {
+        background-color: black;
+        display: flex;
+        overflow: hidden;
+      }
+
+      #dashboard {
+        height: 720px;
+        width: 300px;
+        background-color: gray;
+        border-radius: 15px;
+        border: 1px solid black;
+      }
+
+      #head {
+        font-family: sans-serif;
+        text-align: center;
+        font-weight: 100px;
+      }
+
+      #info {
+        font-family: sans-serif;
+        font-weight: 100px;
+      }
+
+      .options {
+        margin: 40px;
+      }
+
+      #logOut {
+        margin: 40px;
+        color: rgb(179, 3, 3);
+      }
+
+      #quizContainer {
+        padding: 30px;
+        height: 660px;
+        width: 1200px;
+        color: aliceblue;
+        margin-left: 10px;
+        border : 1px solid white;
+        border-radius: 20px;
+        font-size: large;
+        font-family: sans-serif;
+
+      }
+
+      #start {
+        margin-left: 500px;
+        margin-top: 300px;
+        height: 50px;
+        width: 100px;
+        display: inline;
+        font-size: medium;
+        background-color: green;
+        border-radius: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dashboard">
+      <h2 id="head">PROFILE</h2>
+      <hr />
+      <div id="info">
+        <h3 class="options">Home</h3>
+        <h3 class="options">User</h3>
+        <h3 class="options">Submissions</h3>
+        <h3 class="options">Status</h3>
+        <h3 class="options">Progress</h3>
+        <h3 class="options">Notifications</h3>
+        <h3 class="options">Setting</h3>
+        <hr />
+        <h3 id="logOut">Log Out</h3>
+      </div>
+    </div>
+
+    <div id="quizContainer">
+      <button id="start">Start Quiz</button>
+    </div>
+
+    <script>
+      const button = document.querySelector("#start");
+      const quiz = document.querySelector('#quizContainer')
+      button.addEventListener("click", function (e) {
+        button.style.visibility = "hidden";
+
+        const reqUrl = "https://the-trivia-api.com/v2/questions";
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", reqUrl);
+      xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+          const data = JSON.parse(this.responseText);
+          console.log(typeof data);
+          // console.log(data.name);
+          console.log(data);
+          console.log(data[0].question.text);
+          console.log(data[0].correctAnswer);
+          console.log(data[0].incorrectAnswers[0]);
+          console.log(data[0].incorrectAnswers[1]);
+          console.log(data[0].incorrectAnswers[2]);
+
+        quiz.innerHTML = `Question: ${data[0].question.text}
+        \n a. ${data[0].correctAnswer}
+        \n b. ${data[0].incorrectAnswers[1]}
+        \n c. ${data[0].incorrectAnswers[0]}
+        \n d. ${data[0].incorrectAnswers[2]}`
+
+      
+}
+      };
+
+xhr.send();
+        
+
+      });
+    </script>
+  </body>
+</html>
