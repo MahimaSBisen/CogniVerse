@@ -18,13 +18,13 @@ xhr.onreadystatechange = function () {
     // console.log(data[0].incorrectAnswers[0]);
     // console.log(data[0].incorrectAnswers[1]);
     // console.log(data[0].incorrectAnswers[2]);
+    quiz.innerHTML = `<h3 id="ques"> Question:  ${data[0].question.text} </h3>
+    <button class="optionAns"  id="ansBut"> A. ${data[0].correctAnswer}</button> 
+    <button class="optionAns"  id="IansBut1"> B. ${data[0].incorrectAnswers[0]}</button> 
+    <button class="optionAns"  id="IansBut2"> C. ${data[0].incorrectAnswers[1]}</button> 
+    <button class="optionAns"  id="IansBut3"> D. ${data[0].incorrectAnswers[2]}</button> 
+    <button id="next">Next</button>`
 
-   quiz.innerHTML = `<h3 id="ques"> Question:  ${data[0].question.text} </h3>
-   <button class="optionAns"  id="ansBut"> A. ${data[0].correctAnswer}</button> 
-   <button class="optionAns"  id="IansBut1"> B. ${data[0].incorrectAnswers[0]}</button> 
-   <button class="optionAns"  id="IansBut2"> C. ${data[0].incorrectAnswers[1]}</button> 
-   <button class="optionAns"  id="IansBut3"> D. ${data[0].incorrectAnswers[2]}</button> 
-`
 
 const cAns = document.querySelector('#ansBut')
   cAns.addEventListener('click',function(e){
@@ -34,6 +34,7 @@ const cAns = document.querySelector('#ansBut')
     <button class="optionAns"  id="IansBut1"> B. ${data[0].incorrectAnswers[0]}</button> 
     <button class="optionAns"  id="IansBut2"> C. ${data[0].incorrectAnswers[1]}</button> 
     <button class="optionAns"  id="IansBut3"> D. ${data[0].incorrectAnswers[2]}</button> 
+    <button id="next">Next</button>
     <button id="butCAns"> Correct Answer </button>`
     } 
   })
@@ -46,6 +47,7 @@ const cAns = document.querySelector('#ansBut')
         <button class="optionAns"  id="IansBut1"> B. ${data[0].incorrectAnswers[0]}</button> 
         <button class="optionAns"  id="IansBut2"> C. ${data[0].incorrectAnswers[1]}</button> 
         <button class="optionAns"  id="IansBut3"> D. ${data[0].incorrectAnswers[2]}</button> 
+        <button id="next">Next</button>
         <button class="butWAns">Incorrect Answer</button>`
       }
   })
@@ -58,6 +60,7 @@ const cAns = document.querySelector('#ansBut')
         <button class="optionAns"  id="IansBut1"> B. ${data[0].incorrectAnswers[0]}</button> 
         <button class="optionAns"  id="IansBut2"> C. ${data[0].incorrectAnswers[1]}</button> 
         <button class="optionAns"  id="IansBut3"> D. ${data[0].incorrectAnswers[2]}</button> 
+        <button id="next">Next</button>
         <button class="butWAns"> Incorrect Answer</button>`
       }
   })
@@ -70,25 +73,35 @@ const cAns = document.querySelector('#ansBut')
         <button class="optionAns"  id="IansBut1"> B. ${data[0].incorrectAnswers[0]}</button> 
         <button class="optionAns"  id="IansBut2"> C. ${data[0].incorrectAnswers[1]}</button> 
         <button class="optionAns"  id="IansBut3"> D. ${data[0].incorrectAnswers[2]}</button> 
+        <button id="next">Next</button>
         <button class="butWAns">Incorrect Answer</button>`
       }
   })
+
+ 
+
+  const nextButton = document.querySelector('#next')
   
-  let count = 0
-  const buttons = document.querySelector('.optionAns')
-  buttons.addEventListener('click',function(e){
-    count = count + 1
-    if(count === 1){
-      console.log("hii");
-      
-    }
-  })
+nextButton.addEventListener('click',function(e){
+  console.log("next");
+
+
+ 
+})
+
+ 
 
 
 }
 };
 
+
+
 xhr.send();
 });
+
+
+
+
 
 
